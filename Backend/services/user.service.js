@@ -11,7 +11,6 @@ const [existingUser]=await db
     firstname: usersTable.firstname,
     lastname: usersTable.lastname,
     email:usersTable.email,
-    salt: usersTable.salt,
     password: usersTable.password,
 
 })
@@ -21,14 +20,13 @@ const [existingUser]=await db
 return existingUser;  // return undefined if no matches found
 }
 
-export async function createUser(firstname, lastname,email, salt, hashedPassword){ 
+export async function createUser(firstname, lastname,email,hashedPassword){ 
     const [user] = await db.insert(usersTable).values({
         firstname,
         lastname,
         email,
-        salt,
         password: hashedPassword,
-    }).returning({ id:usersTable.id});
+    }).returning({ id: usersTable.id});
     
     return user;  
     }

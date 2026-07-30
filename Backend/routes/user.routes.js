@@ -1,7 +1,7 @@
 import express from 'express'
 import { getUserByEmail, createUser} from '../services/user.service.js';
 import {signupPostReqBodySchema, loginPostRequestBodySchema} from '../validation/request.validation.js'
-import { hashPassword} from '../utils/hash.js';
+import { hashPassword,verifyPassword } from '../utils/hash.js';
 import {createUserToken} from '../utils/token.js'
 
 const router= express.Router();
