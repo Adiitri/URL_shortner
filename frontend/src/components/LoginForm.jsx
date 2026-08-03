@@ -16,8 +16,8 @@ export default function LoginForm() {
     e.preventDefault();
     setError('');
     setLoading(true);
-    try {
-      const { token } = await login(form);
+    try{
+      const { token } = await login(form); //email,password is input
       loginWithToken(token);
     } catch (err) {
       setError(err.message);

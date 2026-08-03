@@ -6,7 +6,7 @@
 // Production -> your deployed Render URL, e.g. https://your-backend.onrender.com
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
-async function request(path, { method = 'GET', body, token } = {}) {
+async  function request(path, { method = 'GET', body, token } = { }) {
   const headers = { 'Content-Type': 'application/json' };
   if (token) headers['Authorization'] = `Bearer ${token}`;
 
@@ -16,29 +16,30 @@ async function request(path, { method = 'GET', body, token } = {}) {
     body: body ? JSON.stringify(body) : undefined,
   });
 
-  const data = await res.json().catch(() => null);
+  const data = await res.json()
+  .catch(() => null );
 
   if (!res.ok) {
-    // Backend sends errors as { error: ... } or { message: ... }
+    // backend send errors in format { error: ...} or { message: ...}
     const message = data?.error?.message || data?.error || data?.message || 'Something went wrong';
     throw new Error(typeof message === 'string' ? message : JSON.stringify(message));
   }
 
   return data;
-}
+ }
 
 export function signup({ firstname, lastname, email, password }) {
-  return request('/user/signup', {
+  return request('/user/signup', {  // will return token
     method: 'POST',
     body: { firstname, lastname, email, password },
-  });
+  }); 
 }
 
 export function login({ email, password }) {
-  return request('/user/login', {
+  return request( '/user/login', {
     method: 'POST',
     body: { email, password },
-  });
+  } );
 }
 
 export function createShortUrl(url, token) {
