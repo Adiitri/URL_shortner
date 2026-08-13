@@ -15,8 +15,9 @@ export default function SignupForm({ onSignedUp }) {
     setError('');
     setLoading(true);
     try {
-      await signup(form);
-      onSignedUp(); // tell parent to switch to the login view
+      await signup(form); // send info backend
+      alert('user account created! Pls login');
+      onSignedUp();       // tell parent to switch to the login view
     } catch (err) {
       setError(err.message);
     } finally {
@@ -50,7 +51,7 @@ export default function SignupForm({ onSignedUp }) {
       />
       <input
         type="password"
-        placeholder="Password (min 8 characters)"
+        placeholder="Password (min 8 characters) "
         value={form.password}
         onChange={(e) => updateField('password', e.target.value)}
         minLength={8}

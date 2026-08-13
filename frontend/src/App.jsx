@@ -10,7 +10,7 @@ import './App.css';
 export default function App() {
   const { isAuthenticated, token, logout } = useAuth();
 
-  // Toggle between login/signup when logged out.
+  // Toggle between login/ signup 
   const [showSignup, setShowSignup] = useState(false);
 
   const [urls, setUrls] = useState([]);
@@ -24,16 +24,17 @@ export default function App() {
     try {
       const { codes } = await getMyUrls(token);
       setUrls(codes);
-    } catch (err) {
+    } 
+    catch (err){
       setListError(err.message);
-    } finally {
+    } finally{
       setLoadingUrls(false);
-    }
-  }, [token]);
+  }
+}, [token]);
 
   useEffect(() => {
     if (isAuthenticated) refreshUrls();
-  }, [isAuthenticated, refreshUrls]);
+  }, [ isAuthenticated, refreshUrls]);
 
   async function handleDelete(id) {
     try {
@@ -75,17 +76,18 @@ export default function App() {
 
   return (
     <div className="page">
-      <div className="header-row">
+       <div className="header-row">
         <h1>URL Shortener</h1>
+
         <button className="link-btn" onClick={logout}>
           Log out
         </button>
       </div>
 
-      <ShortenForm onCreated={refreshUrls} />
+      <ShortenForm onCreated= {refreshUrls} />
 
-      {loadingUrls && <p className="empty-text">Loading your links...</p>}
-      {listError && <p className="error-text">{listError}</p>}
+      {loadingUrls && <p className="empty-text">Loading your links . ..</p>}
+      {listError && <p className="error-text">{listError} </p>}
       {!loadingUrls && <UrlList urls={urls} onDelete={handleDelete} />}
     </div>
   );

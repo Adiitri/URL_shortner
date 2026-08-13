@@ -20,7 +20,7 @@ h1 {
   margin-bottom: 0;
 }
 
-/* --- Auth forms (login/signup) --- */
+/*     Auth forms (login/signup)  */
 
 .auth-form {
   display: flex;
@@ -65,16 +65,18 @@ h1 {
   color: #555;
 }
 
-.link-btn {
-  background: none;
+/* logout /signup /login btn */
+.link-btn {           
+  background:#f9b020;
   border: none;
-  color: #2f6fed;
+  border-radius: 8px;
+  color: #030c1d;
   font-weight: 600;
-  padding: 0;
+  padding: 8px 18px;
   font-size: inherit;
 }
 
-/* --- Shorten form --- */
+/*    Shorten form      */
 
 .shorten-form {
   display: flex;
@@ -91,7 +93,7 @@ h1 {
 }
 
 .shorten-form button {
-  padding: 0 18px;
+  padding: 0 18px;         /* top/btm side */
   border: none;
   border-radius: 6px;
   background: #2f6fed;
@@ -104,7 +106,7 @@ h1 {
   cursor: not-allowed;
 }
 
-/* --- URL list --- */
+/*    URL list    */
 
 .url-list {
   list-style: none;

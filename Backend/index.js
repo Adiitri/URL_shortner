@@ -11,7 +11,7 @@ const PORT= process.env.PORT ?? 8000;
 app.use(cors({
     origin: process.env.CLIENT_ORIGIN,
     credentials: true, // not required now
-  }))
+  }) )
 app.use(express.json());
 app.use(authenticationMiddleware);
 
