@@ -9,7 +9,13 @@ const app = express();
 const PORT= process.env.PORT ?? 8000;
 
 app.use(cors({
-    origin: process.env.CLIENT_ORIGIN,
+    // origin: process.env.CLIENT_ORIGIN,
+    origin: (origin, callback) =>{
+        if(!origin || origin.startsWith('https://url-shortner')){
+            return callback(null, true);  // allowed ; null= no error
+        }
+        return callback(new Error('Not allowed by CORS. ')); // Blocked!  
+        },
     credentials: true, // not required now
   }) )
 app.use(express.json());
