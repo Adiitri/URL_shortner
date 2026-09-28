@@ -28,7 +28,7 @@ A full-stack, full-featured URL shortening application built with Node.js, Expre
 - **Library**: React
 - **Build Tool**: Vite
 - **Styling**: CSS
-- **HTTP Client**: Axios / Custom Fetch Wrapper
+- **HTTP Client**: Native Fetch API (`fetch`)
 
 ---
 
